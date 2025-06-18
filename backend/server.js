@@ -5,7 +5,9 @@ const { Server } = require("socket.io");
 const connectDB = require("./config/db");
 require("dotenv").config();
 
+// Try multiple ports if the default is busy
 const PORT = process.env.PORT || 5000;
+const ALTERNATE_PORT = process.env.ALTERNATE_PORT || 5001;
 
 const server = http.createServer(app);
 
