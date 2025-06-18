@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Git files (to handle nested Git repositories)
+.git/
+**/.git/
+**/.gitignore
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+/frontend/build/
+/frontend/dist/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Misc
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Debug
+.debug
+
+# Temporary files
+*.tmp
+*.temp
+
+# Production
+/build
+
+# Dependency directories
+.npm
+.yarn
