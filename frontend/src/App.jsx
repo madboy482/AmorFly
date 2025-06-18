@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Onboarding from "./pages/Onboarding";
 import PodDashboard from "./pages/PodDashboard";
