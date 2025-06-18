@@ -10,12 +10,13 @@ exports.registerUser = async (req, res) => {
       return res.status(400).json({ error: "Skill and personality type required" });
     }
 
-    const username = generateUsername();
+    const username = await generateUsername();
 
     const user = new User({
       username,
       skill,
       personalityType,
+      isEligibleForConnection: true,
     });
 
     // Pod Matching Logic
