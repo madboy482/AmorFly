@@ -1,4 +1,3 @@
-// backend/models/Reflection.js
 const mongoose = require("mongoose");
 
 const reflectionSchema = new mongoose.Schema({
