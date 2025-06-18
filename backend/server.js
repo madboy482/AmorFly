@@ -11,10 +11,9 @@ const ALTERNATE_PORT = process.env.ALTERNATE_PORT || 5001;
 
 const server = http.createServer(app);
 
-// ✅ FIX: Proper CORS for frontend at localhost:3000
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // allow frontend to connect
+    origin: "*", // allow frontend to connect
     methods: ["GET", "POST"],
     credentials: true
   }
