@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const skillOptions = ["guitar", "cooking", "mindfulness", "coding"];
+const skillOptions = ["guitar", "cooking", "mindfulness", "coding", "fitness", "writing", "painting", "photography", "language learning", "public speaking"];
 const personalityOptions = ["introvert", "extrovert", "ambivert"];
 
 export default function Onboarding() {
