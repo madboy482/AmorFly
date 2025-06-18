@@ -6,10 +6,12 @@ exports.requestConnection = async (req, res) => {
     const userId = req.body.userId;
     const user = await User.findById(userId);
 
-    if (!user) return res.status(404).json({ error: "User not found" });
-
-    if (user.progressPoints < 20) {
+    if (!user) return res.status(404).json({ error: "User not found" });    if (user.progressPoints < 20) {
       return res.status(403).json({ error: "Not enough progress points (20 required)" });
+    }
+    
+    if (!user.isEligibleForConnection) {
+      return res.status(403).json({ error: "You are not eligible for a connection at this time" });
     }
 
     const now = new Date();
