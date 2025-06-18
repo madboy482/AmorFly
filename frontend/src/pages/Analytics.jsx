@@ -4,7 +4,7 @@ export default function Analytics() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/analytics")
+    fetch("https://amorfly-backend.onrender.com/api/analytics")
       .then((res) => res.json())
       .then((json) => setData(json))
       .catch((err) => console.error("Failed to fetch analytics:", err));
