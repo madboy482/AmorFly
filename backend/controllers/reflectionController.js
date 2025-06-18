@@ -1,4 +1,5 @@
 const Reflection = require("../models/Reflection");
+const User = require("../models/User");
 
 // POST /api/reflections
 exports.createReflection = async (req, res) => {
@@ -10,6 +11,12 @@ exports.createReflection = async (req, res) => {
 
     const reflection = new Reflection({ userId, podId, content });
     await reflection.save();
+
+    // Award progress points for reflection
+    await User.findByIdAndUpdate(userId, {
+      $inc: { progressPoints: 5 },
+      $set: { isEligibleForConnection: true }
+    });
 
     res.status(201).json({ message: "Reflection saved", reflection });
   } catch (err) {
