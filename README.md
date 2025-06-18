@@ -61,8 +61,4 @@ amor_fly/
 
 ## 📝 License
 
-This project is part of an internship submission and is not licensed for public use.
-
----
-
-© 2025 Amor Fly
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
