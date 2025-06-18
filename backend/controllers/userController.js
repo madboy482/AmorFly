@@ -1,4 +1,3 @@
-// backend/controllers/userController.js
 const User = require("../models/User");
 const Pod = require("../models/Pod");
 const generateUsername = require("../utils/generateUsername");
