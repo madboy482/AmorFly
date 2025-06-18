@@ -3,7 +3,6 @@ const router = express.Router();
 const Feedback = require("../models/Feedback");
 const User = require("../models/User");
 
-// ✅ POST /api/feedback
 router.post("/", async (req, res) => {
   try {
     const { from, to, podId, rating, comment } = req.body;
@@ -23,7 +22,6 @@ router.post("/", async (req, res) => {
 
     await feedback.save();
 
-    // 🎁 Bonus: Add progress points to sender
     await User.findByIdAndUpdate(from, {
       $inc: { progressPoints: 5 }
     });
