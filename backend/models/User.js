@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true }, // pseudonym
+  username: { type: String, required: true, unique: true },
   skill: { type: String, required: true },
-  personalityType: { type: String, required: true }, // e.g., extrovert/introvert
+  personalityType: { type: String, required: true },
   progressPoints: { type: Number, default: 0 },
   podId: { type: mongoose.Schema.Types.ObjectId, ref: "Pod", default: null },
   lastConnectionDate: { type: Date, default: null },
