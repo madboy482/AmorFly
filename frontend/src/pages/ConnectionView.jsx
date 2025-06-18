@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function ConnectionView() {
   const [user, setUser] = useState(null);
-  const [status, setStatus] = useState("idle"); // idle, loading, matched, cooldown, not-eligible
+  const [status, setStatus] = useState("idle");
   const [connection, setConnection] = useState(null);
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState({ rating: 5, comment: "" });
@@ -141,12 +141,15 @@ export default function ConnectionView() {
 
         {status === "cooldown" && cooldownTime && (
           <p className="text-sm text-red-600">⏳ You can connect again in: <strong>{cooldownTime}</strong></p>
-        )}
-
-        {status === "matched" && connection && (
+        )}        {status === "matched" && connection && (
           <div className="mt-4 bg-indigo-50 p-3 rounded text-left text-sm">
             <p><strong>✅ Matched With:</strong></p>
-            <p>User ID: <code>{connection.user1 === user._id ? connection.user2 : connection.user1}</code></p>
+            <p className="text-sm flex items-center">
+              <span className="inline-block h-6 w-6 rounded-full bg-indigo-600 text-white flex items-center justify-center mr-2">
+                {connection.skill.charAt(0).toUpperCase()}
+              </span>
+              Anonymous Partner
+            </p>
             <p>Skill: {connection.skill}</p>
             <p>Connected At: {new Date(connection.startedAt).toLocaleString()}</p>
             <p>Expires: {new Date(connection.expiresAt).toLocaleString()}</p>
