@@ -1,5 +1,6 @@
-// backend/socket/index.js
 const Message = require("../models/Message");
+const filterProfanity = require("../utils/profanityFilter");
+const User = require("../models/User");
 
 module.exports = (io) => {
   io.on("connection", (socket) => {
@@ -19,20 +20,29 @@ module.exports = (io) => {
       }
 
       try {
+        // Filter profanity
+        const filteredContent = filterProfanity(content);
+        
         const message = new Message({
           podId,
           sender: senderId,
-          content,
+          content: filteredContent,
           type,
         });
 
         await message.save();
+        
+        // Award points for participation
+        await User.findByIdAndUpdate(senderId, {
+          $inc: { progressPoints: 1 },
+          $set: { isEligibleForConnection: true }
+        });
 
         io.to(podId).emit("receiveMessage", {
           _id: message._id,
           podId,
           sender: senderId,
-          content,
+          content: filteredContent,
           type,
           createdAt: message.createdAt,
         });
