@@ -15,7 +15,7 @@ export default function PodDashboard() {
   const messagesEndRef = useRef();
   const loadPreviousMessages = async (podId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/messages/${podId}`);
+      const res = await fetch(`https://amorfly-backend.onrender.com/api/messages/${podId}`);
       const data = await res.json();
       if (res.ok) {
         setMessages(data.messages || []);
@@ -32,7 +32,7 @@ export default function PodDashboard() {
     const parsedUser = JSON.parse(storedUser);
     setUser(parsedUser);
 
-    socketRef.current = io("http://localhost:5000");
+    socketRef.current = io("https://amorfly-backend.onrender.com");
 
     socketRef.current.on("connect", () => {
       console.log("✅ Socket connected:", socketRef.current.id);
@@ -82,7 +82,7 @@ export default function PodDashboard() {
   const handleReflectionSubmit = async () => {
     if (!reflectionInput.trim()) return;
     try {
-      const res = await fetch("http://localhost:5000/api/reflections", {
+      const res = await fetch("https://amorfly-backend.onrender.com/api/reflections", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -106,7 +106,7 @@ export default function PodDashboard() {
 
   const loadReflections = async (podId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/reflections/${podId}`);
+      const res = await fetch(`https://amorfly-backend.onrender.com/api/reflections/${podId}`);
       const data = await res.json();
       if (res.ok) setReflections(data.reflections);
     } catch (err) {
