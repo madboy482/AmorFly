@@ -31,7 +31,7 @@ export default function ConnectionView() {
     const parsedUser = JSON.parse(stored);
     setUser(parsedUser);
 
-    fetch(`http://localhost:5000/api/users/${parsedUser._id}`)
+    fetch(`https://amorfly-backend.onrender.com/api/users/${parsedUser._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.user) {
@@ -56,7 +56,7 @@ export default function ConnectionView() {
     setStatus("loading");
 
     try {
-      const res = await fetch("http://localhost:5000/api/connections/request", {
+      const res = await fetch("https://amorfly-backend.onrender.com/api/connections/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -88,7 +88,7 @@ export default function ConnectionView() {
 
   const submitFeedback = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/feedback", {
+      const res = await fetch("https://amorfly-backend.onrender.com/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
